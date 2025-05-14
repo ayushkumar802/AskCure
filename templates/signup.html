@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DocGuide - SignUp</title>
+    <title>SignUp - AskCure</title>
     <link rel="icon" href="https://icon-library.com/images/medical-icon-png/medical-icon-png-13.jpg" type="image/jpg"/>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_signin.css') }}">
 </head>
@@ -32,9 +32,9 @@
         </script>
     <div class="container" style="width:350px;">
         <div class="form-container">
-            <div class="logo">DocGuide</div>
+            <div class="logo">AskCure</div>
 
-            <form action="/signup" method="POST">
+            <form action="/signup" style="margin-bottom:-15px;" method="POST">
                 <div class="input-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" placeholder="Choose a username" required>

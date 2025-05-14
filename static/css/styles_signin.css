@@ -135,9 +135,10 @@ body, html {
   cursor: pointer;         /* still indicates it's clickable */
 }
 
-.signup-link:hover {
+.signup-link2:hover {
   color: #28a745;          /* optional hover effect */
 }
+
 
 .flash-message-container {
   position: fixed;

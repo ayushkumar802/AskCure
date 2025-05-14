@@ -1,5 +1,6 @@
 import requests
 import pandas as pd
+import numpy as np
 import re
 import string
 from email.mime.text import MIMEText
@@ -13,6 +14,7 @@ from email.utils import formataddr
 import pickle
 import nltk
 from nltk.data import find
+import math
 
 def download_nltk_data():
     try:
@@ -136,19 +138,57 @@ def preprocess_text(text):
     return " ".join(words)
 
 
-def predict(symptom_text,doctor_df,vectorizer,model,definition_):
+def predict(symptom_text,doctor_df,vectorizer,model,definition_,lat1,lng1):
     processed_text = preprocess_text(symptom_text)
     input_vec = vectorizer.transform([processed_text])
     specialization = model.predict(input_vec)[0]
-    # Filter doctor directory
-    doctors = doctor_df[doctor_df['Specialization'] == specialization]
+    if lat1 and lng1:
+        distances_km = haversine(lat1, lng1, doctor_df['Latitude'], doctor_df['Longitude'])
+        doctor_df['Distance (km)'] = distances_km
+        doctor_df['Distance (km)'] = doctor_df['Distance (km)'].apply(lambda x: round(x,2))
+    else:
+        print("Could not retrieve user location.")
+
+    doctors = doctor_df[doctor_df['Specialization'] == specialization].sort_values('Distance (km)')
     definition_series = definition_[definition_['Specialization'] == specialization]['Definition']
     definition = definition_series.iloc[0] if not definition_series.empty else "No definition available."
 
     if not doctors.empty:
         list_=[]
         for _, row in doctors.head(6).iterrows():
-            list_.append([row['Doctor Name'],row['Phone Number'],row['City']])
+            list_.append([row['Doctor Name'],row['Phone Number'],row['City'],row['Distance (km)']])
         return specialization,definition,list_
     else:
         return specialization,definition,"No doctors found for this specialization in the directory."
+
+
+def haversine(lat1, lon1, lat2, lon2):
+    # Radius of Earth in kilometers
+    R = 6371.0
+
+    # Convert degrees to radians
+    lat1_rad = math.radians(lat1)
+    lon1_rad = math.radians(lon1)
+    lat2_rad = np.radians(lat2)
+    lon2_rad = np.radians(lon2)
+
+    dlat = lat2_rad - lat1_rad
+    dlon = lon2_rad - lon1_rad
+
+    a = np.sin(dlat / 2) ** 2 + np.cos(lat1_rad) * np.cos(lat2_rad) * np.sin(dlon / 2) ** 2
+    c = 2 * np.arcsin(np.sqrt(a))
+
+    distance = R * c
+    return distance
+
+
+def get_my_location():
+    response = requests.get("https://ipinfo.io")
+    data = response.json()
+
+    loc = data.get("loc")  # format: "lat,lng"
+    if loc:
+        lat, lng = map(float, loc.split(","))
+        return lat, lng
+    else:
+        return None

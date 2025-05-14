@@ -7,23 +7,8 @@
 body, html {
   height: 100%;
   font-family: 'Segoe UI', Tahoma, sans-serif;
-  position: relative;
-  overflow: hidden;
-}
-
-.background-image {
-  background-image: url("https://cdni.iconscout.com/illustration/premium/thumb/kids-playing-doctors-8917124-7285345.png");
-  background-repeat: no-repeat;
-  background-position-y: 100%; /* moves image downward */
-  background-position-x: center;
-  background-size: contain;
-  opacity: 0.2;
-  position: fixed;
-  top: 10%;
-  left: 0;
-  height: 70%;
-  width: 100%;
-  z-index: -1;
+  position: relative;     /*relative*/
+  overflow: hidden;      /*hidden*/
 }
 
 
@@ -242,15 +227,17 @@ body, html {
 .quote-container {
   text-align: center;
   padding: 2rem;
-  max-width: 800px;
+  max-width: 600px;
   margin-top: -160px; /* move it up */
 }
+
 
 blockquote {
   font-size: 1.5rem;
   font-style: italic;
   color: #2c3e50;
 }
+
 
 .author {
   margin-top: 1rem;

@@ -7,6 +7,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import pickle
 from dotenv import load_dotenv
 import os
+from flask import jsonify
+
 
 load_dotenv()
 
@@ -16,7 +18,6 @@ app.secret_key = os.getenv("FLASK_SECRET_KEY")
 
 # Set your database URL here
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://chalaksetu_user:zVzQNRcri49z4aqBvRzAvDtgZhRZncAf@dpg-d06cfmruibrs73eeoibg-a.ohio-postgres.render.com/chalaksetu'
-
 # Optional but recommended:
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -56,15 +57,21 @@ def home():
                 vectorizer = pickle.load(f2)
 
             doctor_df = pd.read_csv('datasets/doctors_dataset_1000_v2.csv')
+            definition_ = pd.read_csv('datasets/specializations_definitions.csv', encoding='ISO-8859-1')
+
+            user_lat = session.get('user_lat')
+            user_lng = session.get('user_lng')
+
 
 
             # Make prediction
-            specialization, definition, list_ = functions.predict(symptom_text, doctor_df, vectorizer, model, definition_)
+            specialization, definition, list_ = functions.predict(symptom_text, doctor_df, vectorizer, model, definition_,user_lat,user_lng)
 
             # Store in session temporarily
             session['specialization'] = specialization
             session['definition'] = definition
             session['list_'] = list_
+
 
             # Redirect to prevent resubmission
             return redirect(url_for('home'))
@@ -80,6 +87,21 @@ def home():
                            list_=list_,
                            logged_in=session.get('logged_in', False))
 
+@app.route('/save_location', methods=['POST'])
+def save_location():
+    data = request.get_json()
+    lat = data.get('lat')
+    lng = data.get('lng')
+
+    if lat is not None and lng is not None:
+        session['user_lat'] = lat
+        session['user_lng'] = lng
+        return jsonify({'status': 'success'}), 200
+    return jsonify({'status': 'failed'}), 400
+
+@app.route('/blogs')
+def blogs():
+    return render_template('blogs.html')
 
 @app.route('/terms')
 def terms():
@@ -197,8 +219,10 @@ def verify_otp():
                 print(f"User {username} inserted successfully!")
             except Exception as e:
                 db.session.rollback()
+                import traceback
+                traceback.print_exc()  # This will print the real error
                 print(f"Error inserting user: {e}")
-                flash("An error occurred while creating your account.", "error")
+                flash(f"Database error: {e}", "error")  # Optional: show to user
                 return redirect(url_for('signup'))
 
             return redirect(url_for('signin'))

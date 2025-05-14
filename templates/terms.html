@@ -3,9 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Terms & Conditions - DocGuide</title>
-  <link rel="icon" href="https://icon-library.com/images/medical-icon-png/medical-icon-png-13.jpg" type="image/jpg"/>
+  <title>Terms & Conditions - AskCure</title><link rel="icon" href="https://icon-library.com/images/medical-icon-png/medical-icon-png-13.jpg" type="image/jpg"/>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+
+  <!-- Inline CSS to allow scrolling -->
+  <style>
+    html, body {
+      overflow-y: auto !important;
+      height: auto !important;
+      position: static !important;
+    }
+    .navbar {
+      position: fixed;
+    }
+  </style>
 </head>
 
 <body>
@@ -20,17 +31,15 @@
     {% endwith %}
   </div>
 
-  <!-- Background -->
-  <div class="background-image"></div>
-
   <!-- Navbar -->
   <header class="navbar">
     <div class="nav-left">
-      <div class="logo">DocGuide</div>
+      <div class="logo">AskCure</div>
       <nav class="nav-links">
         <a href="/">Home</a>
         <a href="/about">About</a>
-        <a href="#">Terms</a>
+        <a href="/blogs">Blogs</a>
+        <a href="#" class="active">Terms</a>
         <a href="/contact">Contact/Support</a>
       </nav>
     </div>
@@ -44,14 +53,15 @@
     </div>
   </header>
 
-  <!-- Terms Section -->
-  <main class="main-section">
-    <div class="content-container" style="width: 900px; margin-bottom: 400px; background-color: rgba(0,0,0,0.7); padding: 30px; border-radius: 20px; color: white; opacity:0.9;">
-      <h1 style="text-align:center; ">Terms and Conditions</h1>
-      <p>Welcome to DocGuide. By accessing or using this website, you agree to be bound by the following terms:</p>
+  <!-- Terms Content -->
+  <main class="main-section" style="max-width: 1000px; margin: 100px auto 40px; padding: 0 20px;">
+    <h1 style="font-size: 36px; margin-bottom: 30px; text-align: center;">📄 Terms and Conditions</h1>
+
+    <section style="margin-bottom: 40px; width:1000px;">
+      <p>Welcome to AskCure. By accessing or using this website, you agree to be bound by the following terms:</p>
 
       <h3>1. Use of Service</h3>
-      <p>DocGuide is intended for informational purposes only and is not a substitute for professional medical advice or treatment.</p>
+      <p>AskCure is intended for informational purposes only and is not a substitute for professional medical advice or treatment.</p>
 
       <h3>2. User Responsibilities</h3>
       <p>You agree not to misuse the platform, provide false information, or attempt to breach the security of our system.</p>
@@ -60,13 +70,13 @@
       <p>Your personal information will be handled in accordance with our Privacy Policy. We do not share your data with third parties without consent.</p>
 
       <h3>4. Limitation of Liability</h3>
-      <p>DocGuide shall not be held liable for any direct, indirect, or incidental damage arising from the use of the platform.</p>
+      <p>AskCure shall not be held liable for any direct, indirect, or incidental damage arising from the use of the platform.</p>
 
       <h3>5. Changes to Terms</h3>
       <p>We reserve the right to update these terms at any time. Continued use of the platform implies acceptance of the revised terms.</p>
 
-      <p style="margin-top:35px;">If you have any questions or concerns about these terms, please <a href="/contact" style="color:#28a745;">contact us</a>.</p>
-    </div>
+      <p style="margin-top: 35px;">If you have any questions or concerns about these terms, please <a href="/contact" style="color: #28a745;">contact us</a>.</p>
+    </section>
   </main>
 
   <!-- Flash Message Auto-hide -->

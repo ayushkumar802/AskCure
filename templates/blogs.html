@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog - AskCure</title>
+  <link rel="icon" href="https://icon-library.com/images/medical-icon-png/medical-icon-png-13.jpg" type="image/jpg"/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+
+  <!-- Inline CSS to allow scrolling -->
+  <style>
+    html, body {
+      overflow-y: auto !important;
+      height: auto !important;
+      position: static !important;
+    }
+    .navbar {
+    position: fixed;
+  }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="nav-left">
+      <div class="logo">AskCure</div>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="#" class="active">Blogs</a>
+        <a href="/terms">Terms</a>
+        <a href="/contact">Contact/Support</a>
+      </nav>
+    </div>
+    <div class="nav-actions">
+      {% if not logged_in %}
+        <a href="/signin"><button class="signin-btn">Sign In</button></a>
+        <a href="/signup"><button class="register-btn">Register</button></a>
+      {% else %}
+        <a href="/logout"><button class="logout-btn">Logout</button></a>
+      {% endif %}
+    </div>
+  </header>
+
+  <!-- Blog Content -->
+  <main class="main-section" style="max-width: 1000px; margin: 100px auto 40px; padding: 0 20px;">
+    <h1 style="font-size: 36px; margin-bottom: 30px;">📝 Health & Wellness Blog</h1>
+
+    <section style="margin-bottom: 50px;  width:1000px;">
+
+      <h2 style="margin-top: 20px; margin-bottom: 15px;">🥗 Foods That Boost Immunity</h2>
+      <p>Incorporating citrus fruits, garlic, ginger, spinach, and almonds into your daily diet can significantly strengthen and support your immune system. Citrus fruits like oranges, lemons, and grapefruits are rich in vitamin C, a powerful antioxidant known to boost the production of white blood cells, which are vital for fighting infections. Garlic contains sulfur compounds that enhance the immune response and help the body ward off colds and other illnesses. Ginger, with its anti-inflammatory and antioxidant properties, is effective in reducing inflammation and promoting overall health. Spinach is loaded with essential nutrients such as vitamins A, C, and E, magnesium, and iron, all of which contribute to immune function. Almonds, on the other hand, are a great source of vitamin E, a fat-soluble antioxidant that helps protect cells from damage and supports immune health. Including a variety of these nutrient-dense foods in your meals can provide long-term benefits and help your body stay strong and resilient.</p>
+      <br>
+      <img src="https://media.istockphoto.com/id/1301565375/photo/paleo-diet-healthy-food-background.jpg?s=170667a&w=0&k=20&c=_Dod_kh1ZzoMe0HClLBM-_rj5Myy2jjSDH-dlGdMlHs=" alt="Healthy Food" style="width:100%; max-width:700px; border-radius:8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+    </section>
+
+    <section style="margin-bottom: 50px;  width:1000px;">
+
+      <h2 style="margin-top: 20px; margin-bottom: 15px;">🏃‍♀️ Small Habits for a Healthy Life</h2>
+      <p>Taking 30-minute walks daily, staying well-hydrated, and maintaining a consistent sleep schedule are simple yet powerful habits that can greatly improve your overall health and well-being. Regular walking not only boosts cardiovascular health but also helps in maintaining a healthy weight, improving mood, and reducing stress levels. It enhances circulation, strengthens muscles, and supports joint flexibility, all of which contribute to a healthier lifestyle. Staying hydrated by drinking enough water throughout the day aids digestion, regulates body temperature, flushes out toxins, and keeps your skin healthy. Equally important is getting 7–9 hours of quality sleep every night. A consistent sleep routine helps balance hormones, supports mental clarity, and allows the body to repair and recharge. These small yet consistent lifestyle choices can help prevent or manage common lifestyle-related diseases such as type 2 diabetes, hypertension, obesity, and chronic fatigue. By adopting these practices, you're investing in a healthier, more energetic, and balanced life.</p>
+      <br>
+      <img src="https://img.freepik.com/free-photo/running-man_101945-930.jpg?size=626&ext=jpg" alt="Daily Exercise" style="width:100%; max-width:800px; border-radius:8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+    </section>
+
+    <section style=" width:1000px;">
+      <h2 style="margin-top: 20px; margin-bottom: 15px;">🧘‍♂️ Managing Stress Effectively</h2>
+      <p>Stress can significantly weaken your immune system and negatively impact both your physical and mental health. When you're constantly under stress, your body releases hormones like cortisol, which, in high amounts over time, can suppress immune function and increase your susceptibility to illness. It can also lead to issues such as high blood pressure, poor sleep, anxiety, and even digestive problems. To combat stress, incorporating simple yet effective techniques into your daily routine is essential. Practice deep breathing exercises to slow your heart rate and bring a sense of calm. Use meditation or mindfulness apps that guide you through relaxing sessions designed to reduce mental clutter. Additionally, taking regular breaks from screens—whether computer, phone, or television—can greatly reduce eye strain and mental fatigue. Step outside for fresh air, stretch, or simply pause for a moment of quiet. These small habits, when practiced regularly, can improve your mood, focus, and overall health.</p>
+      <br>
+      <img src="https://img.freepik.com/premium-photo/man-blue-hiking-gear-trekked-up-steep-mountain-trail_985342-13040.jpg" alt="Mental Health" style="width:100%; max-width:800px; border-radius:8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+    </section>
+  </main>
+</body>
+</html>

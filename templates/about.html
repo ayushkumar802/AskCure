@@ -3,9 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About - DocGuide</title>
+  <title>About - AskCure</title>
   <link rel="icon" href="https://icon-library.com/images/medical-icon-png/medical-icon-png-13.jpg" type="image/jpg"/>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+
+  <!-- Inline CSS for layout consistency -->
+  <style>
+    html, body {
+      overflow-y: auto !important;
+      height: auto !important;
+      position: static !important;
+    }
+    .navbar {
+      position: fixed;
+    }
+  </style>
 </head>
 
 <body>
@@ -20,16 +32,14 @@
     {% endwith %}
   </div>
 
-  <!-- Background -->
-  <div class="background-image"></div>
-
   <!-- Navbar -->
   <header class="navbar">
     <div class="nav-left">
-      <div class="logo">DocGuide</div>
+      <div class="logo">AskCure</div>
       <nav class="nav-links">
         <a href="/">Home</a>
-        <a href="#">About</a>
+        <a href="#" class="active">About</a>
+        <a href="/blogs">Blogs</a>
         <a href="/terms">Terms</a>
         <a href="/contact">Contact/Support</a>
       </nav>
@@ -45,26 +55,25 @@
   </header>
 
   <!-- About Section -->
-  <main class="main-section">
-    <div class="content-container" style="width: 900px; margin-bottom: 400px; background-color: rgba(0,0,0,0.7); padding: 30px; border-radius: 20px; color: white; opacity:0.9;">
-      <h1 style="text-align:center;">About DocGuide</h1>
+  <main class="main-section" style="max-width: 1000px; margin: 100px auto 40px; padding: 0 20px;">
+    <h1 style="font-size: 36px; margin-bottom: 30px; text-align: center;">📘 About AskCure</h1>
 
-      <p>DocGuide is a university project developed by a team of students from <strong>SAGE University, Indore</strong>. The main goal of this project is to help users identify the correct type of medical specialist they should consult based on a short description or prompt about their health concerns.</p>
+    <section style="margin-bottom: 40px;">
+      <p><strong>AskCure</strong> is a university project developed by a team of students from <strong>SAGE University, Indore</strong>. The main goal of this project is to help users identify the correct type of medical specialist they should consult based on a short description or prompt about their health concerns.</p>
 
-      <h2>🔍 What Does It Do?</h2>
+      <h2 style="margin-top: 30px;">🔍 What Does It Do?</h2>
       <p>Users simply enter a brief text describing their symptoms or medical issue. Our trained machine learning model analyzes the prompt and predicts which type of specialist doctor is most relevant—such as a dermatologist, cardiologist, neurologist, etc.</p>
       <p>We also provide the contact numbers of dummy doctors from that predicted specialty for informational purposes.</p>
 
-      <h2>👨‍💻 Project Team</h2>
+      <h2 style="margin-top: 30px;">👨‍💻 Project Team</h2>
       <ul>
         <li><strong>Ayush Kumar</strong> (Group Leader) - 23ENG2CIT1017</li>
         <li><strong>Mohil Diwan</strong> - 23ADV3ACS0007</li>
         <li><strong>Priya Malakar</strong> - 23ENG2CIT0042</li>
       </ul>
-      <br>
 
-      <p style="margin-top:30px;">We are proud to build a smart assistant that bridges the gap between symptom identification and the right medical help using AI.</p>
-    </div>
+      <p style="margin-top: 30px;">We are proud to build a smart assistant that bridges the gap between symptom identification and the right medical help using AI.</p>
+    </section>
   </main>
 
   <!-- Flash Message Auto-hide -->

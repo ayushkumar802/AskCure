@@ -3,9 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact & Support - DocGuide</title>
+  <title>Contact & Support - AskCure</title>
   <link rel="icon" href="https://icon-library.com/images/medical-icon-png/medical-icon-png-13.jpg" type="image/jpg"/>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+  <style>
+    html, body {
+      overflow-y: auto !important;
+      height: auto !important;
+      position: static !important;
+    }
+    .navbar {
+      position: fixed;
+    }
+  </style>
 </head>
 
 <body>
@@ -20,18 +30,16 @@
     {% endwith %}
   </div>
 
-  <!-- Background -->
-  <div class="background-image"></div>
-
   <!-- Navbar -->
   <header class="navbar">
     <div class="nav-left">
-      <div class="logo">DocGuide</div>
+      <div class="logo">AskCure</div>
       <nav class="nav-links">
         <a href="/">Home</a>
         <a href="/about">About</a>
+        <a href="/blogs">Blogs</a>
         <a href="/terms">Terms</a>
-        <a href="#">Contact/Support</a>
+        <a href="#" class="active">Contact/Support</a>
       </nav>
     </div>
     <div class="nav-actions">
@@ -45,25 +53,27 @@
   </header>
 
   <!-- Contact Section -->
-  <main class="main-section">
-    <div class="content-container" style="width: 900px;  margin-bottom: 400px; background-color: rgba(0,0,0,0.7); padding: 30px; border-radius: 20px; color: white; opacity:0.9;">
-      <h1 style="text-align:center;">Contact & Support</h1>
+  <main class="main-section" style="max-width: 1000px; margin: 100px auto 40px; padding: 0 20px;">
+    <h1 style="font-size: 36px; margin-bottom: 30px; text-align: center;">📬 Contact & Support</h1>
+
+    <section style="margin-bottom: 40px; width:1000px;">
       <p>Need help or want to give feedback? We'd love to hear from you!</p>
 
       <h3>Email Support</h3>
       <p>📧 Email us at: <a href="mailto:support@docguide.com" style="color: #28a745;">support@docguide.com</a></p>
 
       <h3>Phone Support</h3>
-      <p>📞 Call us at: <strong>+91-62###82882</strong> (Mon-Fri, 10am–6pm IST)</p>
+      <p>📞 Call us at: <strong>+91-62###82882</strong> (Mon–Fri, 10am–6pm IST)</p>
 
       <h3>Submit a Request</h3>
       <form method="POST" action="/contact">
-        <input type="text" name="name" placeholder="Your Name" required style="width:100%; padding:10px; margin:10px 0; border-radius:8px; border:none;">
-        <input type="email" name="email" placeholder="Your Email" required style="width:100%; padding:10px; margin:10px 0; border-radius:8px; border:none;">
-        <textarea name="message" rows="5" placeholder="Your Message" required style="width:100%; height:60px; padding:10px; margin:10px 0; border-radius:8px; border:none;"></textarea>
-        <button type="submit" class="register-btn" style="margin-top:5px;">Send Message</button>
+        <input type="text" name="name" placeholder="Your Name" required style="width:100%; padding:15px; margin:10px 0; border-radius:8px; border:1px solid #ccc;">
+        <input type="email" name="email" placeholder="Your Email" required style="width:100%; padding:15px; margin:10px 0; border-radius:8px; border:1px solid #ccc;">
+        <textarea name="message" rows="5" placeholder="Your Message" required style="width:100%; padding:15px; margin:10px 0; border-radius:8px; border:1px solid #ccc;"></textarea>
+        <button type="submit" class="register-btn" style="margin-top: 10px;">Send Message</button>
       </form>
-    </div>
+
+    </section>
   </main>
 
   <!-- Flash Message Auto-hide -->
