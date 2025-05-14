@@ -32,8 +32,8 @@ download_nltk_data()
 
 def send_email(receiver_email, name):
     otp = random.randint(1000, 9999)
-    sender_email = "docguidebussiness@gmail.com"
-    sender_password = "naqe dxqo efef xvrm"
+    sender_email = "askcuregroups@gmail.com"
+    sender_password = "hevl rktx smjd ynvu"
 
     subject = "Email Verification"
 
@@ -41,20 +41,20 @@ def send_email(receiver_email, name):
     <html>
     <body style="font-family: 'Segoe UI', Tahoma, sans-serif; color: #000000; padding: 20px;">
       <p>Hi <strong>{name}</strong>,</p>
-      <p>Your One-Time Password (OTP) for accessing the <strong>DocGuide App</strong> is:</p>
+      <p>Your One-Time Password (OTP) for accessing the <strong>AskCure App</strong> is:</p>
       <p style="font-size: 20px; font-weight: bold; color: #28a745;">{otp}</p>
       <p>This OTP is valid for the next <strong>24 hours</strong>.</p>
       <p>If you did not request this, please disregard this email.</p>
       <br>
       <p>Thank you,<br>
-      <strong>The DocGuide Team</strong></p>
+      <strong>The AskCare Team</strong></p>
     </body>
     </html>
     """
 
     # Create the email
     msg = MIMEMultipart("alternative")
-    msg["From"] = formataddr(("DocGuide", sender_email))
+    msg["From"] = formataddr(("AskCare", sender_email))
     msg["To"] = receiver_email
     msg["Subject"] = subject
     msg.attach(MIMEText(html_body, "html"))
@@ -86,8 +86,8 @@ def send_email(receiver_email, name):
 
 
 def receive_email(name, user_email, user_message):
-    sender_email = "docguidebussiness@gmail.com"
-    sender_password = "naqe dxqo efef xvrm"
+    sender_email = "askcaregroups@gmail.com"
+    sender_password = "hevl rktx smjd ynvu"
     receiver_email = "ayushkumarrio22@gmail.com"
 
     subject = "User Request"
@@ -99,7 +99,7 @@ def receive_email(name, user_email, user_message):
 
     # Create the email message object
     msg = MIMEMultipart("alternative")
-    msg["From"] = formataddr(("DocGuide requests", sender_email))
+    msg["From"] = formataddr(("AskCure requests", sender_email))
     msg["To"] = receiver_email
     msg["Subject"] = subject
     msg.attach(MIMEText(html_body, "html"))
